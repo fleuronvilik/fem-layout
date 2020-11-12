@@ -38,47 +38,42 @@ div img {
 	clear: both;
 }
 
-[class^=col] + [class^=col] {
-	margin-left: 4%;
-}
-
-
 /* Mobile Landscape Screen Sizes */
 @media only screen and (min-width: 480px)  {
 	[class^=col] {
 		float: left;
-		/*margin: 0 2%;*/
+		margin: 0 2%;
 	}
-/*
+
  	.col-2 {
 		width: 46%;
 	}
-
-	.col-4 {
-		width: 100%;
-	} */
 }
 /* Desktop screen Sizes */
 @media only screen and (min-width: 768px) {
-	.col-1 {
+	[class^=col] {
+		margin: 0;
+	}
+
+	[class^=col] + [class^=col] {
+		margin-left: 4%;
+	}
+
+	article.col-1 { /* overwrite mobile landscape and desktop .col-2 */  
 		width: 22%;
 	}
 
-	.col-2 {
+	.col-2 { /* overwrite mobile landscape .col-2 */
 		width: 48%;
 	}
 
 	.col-3 {
 		width: 74%;
 	}
-
-	.col-4 {
-		width: 100%;
-	}
 }
 
-/* Debugging */
-.col-4 {
+/* Uncomment the following lines for Debugging */
+/* .col-4 {
 	background-color: #c8c6fa;
 }
 
@@ -92,4 +87,4 @@ div img {
 
 .col-1 {
 	background-color: #f5cf8e;
-}
+} */
