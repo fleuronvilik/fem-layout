@@ -31,53 +31,49 @@ div img {
 }
 
 /* grid system -- mobile first! */
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
 
+[class^=col] {
+	flex: 0 0 96%;
+}
 
 /* Mobile Landscape Screen Sizes */
 @media only screen and (min-width: 480px)  {
-
-}
-/* Desktop screen Sizes */
-@media only screen and (min-width: 768px) {
-	.row {
-		display: flex;
-		justify-content: space-around;
-	}
-
-/* 	[class^=col] {
-		margin: 0 2%;
-	} */
-
-	.col-1 {
-		flex: 0 0 21%;
-	}
-
+	.col-1-2,
 	.col-2 {
 		flex: 0 0 46%;
 	}
 
-	.col-3 {
-		flex: 0 0 71%;
-	}
-
+	.col-1-4,
+	.col-3-4,
 	.col-4 {
 		flex: 0 0 96%;
 	}
 }
+/* Desktop screen Sizes */
+@media only screen and (min-width: 768px) {
+	.row {
+		flex-wrap: nowrap;
+	}
+
+	.col-1-2,
+	.col-1-4 {
+		flex: 0 0 21%;
+	}
+
+	.col-3-4 {
+		flex: 0 0 71%;
+	}
+}
 
 /* Uncomment the following lines for Debugging */
-/* .col-4 {
-	background-color: #c8c6fa;
-}
 
-.col-3 {
-	background-color: #c3edfa;
-}
-
-.col-2 {
-	background-color: #f09a9d;
-}
-
-.col-1 {
-	background-color: #f5cf8e;
-} */
+/* .col-1-2,
+.col-1-4 {background-color: #f5cf8e;}
+.col-2 {background-color: #f09a9d;}
+.col-3-4 {background-color: #c3edfa;}
+.col-4 {background-color: #c8c6fa;} */
