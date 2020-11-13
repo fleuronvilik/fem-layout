@@ -34,19 +34,17 @@ nav ul {
   margin: 12px 0 0 0;
   border-bottom: 3px solid #cc8850;
   overflow: auto;
-
 }
 /* splits nav into 2 columns
 http://stackoverflow.com/questions/13104818/simple-2-column-navigation-with-css-and-a-single-list */
-nav li:nth-child(even) {
-  width: 50%;
-  float: right;
-  padding: 0.5em;
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 100%;
 }
-nav li:nth-child(odd) {
-  width: 50%;
-  float: left;
-    padding: 0.5em;
+nav li {
+  flex: 0 0 50%;
+  padding: 0.5em;
 }
 nav a {
   color: #c80060;
@@ -57,24 +55,20 @@ nav a {
 nav a:hover {
   color:#00c4c7;
 }
-
-
-.row:before, 
-.row:after {
-    content:"";
-    display: table;
-    clear:both;
-}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+} /* shared by header, nav, div, footer */
 div.row {
   background-color: #fff6e0;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 1em;
 }
-.floatleft {
+/* .floatleft {
   float: left;
   margin: 0 1em 1em 0;
-}
+} */
 .floatright {
   float: right;
   margin: 0 0 1em 1em;
@@ -120,6 +114,9 @@ blockquote cite {
   display: block;
 }
 footer {
+  flex-direction: column;
+  align-items: center;
+
   background-color: #00CDD1;
   color: white;
   clear: both;
@@ -135,21 +132,10 @@ footer a {
   color: white;
   text-decoration: none;
 }
-
 [class*=‘col’] {
   margin-left: 0;
+  flex: 0 0 96.66666%;
 }
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-1-2,
-  .col-1-4  {
-  width: 96.66666%;
-}
-
-
-
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 550px) and (max-width: 849px) { 
   .wrapper {
@@ -157,30 +143,27 @@ footer a {
       max-width: 767px;
       float: none;
   }
- .col-1,
- .col-2,
- .col-1-2,
-.col-3,
-.col-4,
-.col-1-4 {
-  width: 96.66666%;
-}
-div.row {
-  padding: 0 2em;
-}
-aside[class*='sidebar'] {
-  float: left;
-  width: 47%;
-  margin-right: 3%;
-}
-
-  nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
+  [class*=‘col’] {
+    margin-left: 0;
+    flex: 0 0 96.66666%;
+  }
+  div.row {
+    padding: 0 2em;
+  }
+  .col-1-4 {
+    display: flex;
+    justify-content: space-between;
+  }
+  aside[class*='sidebar'] {
+/*     flex: 0 0 47%;
+    margin-right: 3%; */
+    flex: 0 0 48.5%;
+  }
+  nav ul {
+    flex-wrap: nowrap;
+  }
+  nav li {
+    flex: none;
   }
   nav a {
       padding: 0em 1em 0em 1em;
@@ -191,27 +174,17 @@ aside[class*='sidebar'] {
   .wrapper {
       width: 97%;
       max-width: 1200px;
-      float: none;
+      /* float: none; */
   }
-
   [class*='col-'] {
-    float: left;
     margin-left: 3.33333%;
     min-height: 1px;
   }
-  .col-1,
-  .col-1-2,
   .col-1-4 {
-    width: 20.83333%;
+    flex: 0 0 20.83333%;
   }
-  .col-2 {
-    width: 44.99999%;
-  }
-  .col-3 {
-    width: 69.16665%;
-  }
-  .col-4 {
-    width: 96.66666%;
+  .col-3-4 {
+    flex: 0 0 69.16665%;
   }
   h2 {
     font-size: 3em;
@@ -223,13 +196,11 @@ aside[class*='sidebar'] {
   div.row {
     padding: 0;
   }
-  nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
+  nav ul {
+    flex-wrap: nowrap;
+  }
+  nav li {
+    flex: none;
   }
   nav a {
       padding: 0em 1em 0em 1em;
