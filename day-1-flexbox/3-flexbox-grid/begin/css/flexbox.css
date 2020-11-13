@@ -49,10 +49,13 @@ div img {
 	}
 
 	.col-1-4,
+	.col-2-4,
 	.col-3-4,
 	.col-4 {
 		flex: 0 0 96%;
 	}
+
+	.col-2-4 {order: -1;}
 }
 /* Desktop screen Sizes */
 @media only screen and (min-width: 768px) {
@@ -65,6 +68,11 @@ div img {
 		flex: 0 0 21%;
 	}
 
+	.col-2-4 {
+		flex: 0 0 46%;
+		order: initial;
+	}
+
 	.col-3-4 {
 		flex: 0 0 71%;
 	}
@@ -74,6 +82,7 @@ div img {
 
 /* .col-1-2,
 .col-1-4 {background-color: #f5cf8e;}
-.col-2 {background-color: #f09a9d;}
+.col-2,
+.col-2-4 {background-color: #f09a9d;}
 .col-3-4 {background-color: #c3edfa;}
 .col-4 {background-color: #c8c6fa;} */
