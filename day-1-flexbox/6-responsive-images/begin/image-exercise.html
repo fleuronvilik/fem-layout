@@ -2,13 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 </head>
 <body>
 	<!-- visit http://scottjehl.github.io/picturefill/ for picturefill source -->
 	<div class="bkgdimg"></div>
 	<div>
-		<img src="img/peace-pie-original.jpg" alt="The original giant peace pie">
+		<picture>
+			<source srcset="img/peace-pie-original.jpg" media="(min-width: 1200px)">
+			<source srcset="img/peace-pie-500.jpg" media="(min-width: 800px)">
+			<img src="img/peace-pie-150.jpg" alt="The original giant peace pie">
+		</picture>
 	</div>
 </body>
 </html>
