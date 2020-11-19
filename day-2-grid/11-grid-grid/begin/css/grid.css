@@ -24,6 +24,7 @@ a {
 	float: none;
 	background-color: #fff;
 	display: grid; /* grid system */
+	grid-column-gap: 4%; 
 }
 /* hack to make images flexible in our prototype */
 div img {
@@ -31,7 +32,7 @@ div img {
 	max-width: 250px; 
 }
 
-.col-1-2,
+/* .col-1-2,
 .col-1-4 {
 	background-color: #ffc;
 }
@@ -44,7 +45,7 @@ div img {
 }
 .col-4 {
 	background-color: #cff;
-}
+} */
 
 
 /* Mobile Landscape Screen Sizes */
@@ -55,14 +56,14 @@ div img {
 
 	.col-1-2,
 	.col-2 {
-		grid-column: span 2;
+		grid-column-end: span 2;
 	}
 
 	.col-1-4,
 	.col-2-4,
 	.col-3-4,
 	.col-4 {
-		grid-column: span 4;
+		grid-column-end: span 4;
 	}
 }
 @media only screen and (min-width: 768px) {
@@ -73,20 +74,33 @@ div img {
 
 	.col-1-2,
 	.col-1-4 {
-		grid-column: span 1;
+		grid-column-end: span 1;
 	}
 
 	.col-2-4,
 	.col-2 {
-		grid-column: span 2;
+		grid-column-end: span 2;
 	}
 
 	.col-3-4 {
-		grid-column: span 3;
+		grid-column-start: 2;
+		grid-column-end: span 3;
 	}
 
 	.col-4 {
-		grid-column: span 4;
+		grid-column-end: span 4;
+	}
+	/* row 5, 1-2-1 boxes */
+	.col-1-2.order-first, .col-1-2.order-third {
+		grid-row: 5;
+	}
+	.col-2-4.order-second {
+		grid-column-start: 2;
+		grid-row: 5;
+	} /* causes new row */
+
+ 	.col-1-4.order-first {
+		grid-row: 3;
 	}
 }
 
