@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6 {
   color: #C80060;
 }
 .wrapper {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 article img {
   border-radius: 10px;
@@ -35,18 +35,13 @@ nav ul.full-width {
   border-bottom: 3px solid #cc8850;
   overflow: auto;
 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 /* splits nav into 2 columns
 http://stackoverflow.com/questions/13104818/simple-2-column-navigation-with-css-and-a-single-list */
-nav li:nth-child(even) {
-  width: 50%;
-  float: right;
+nav li {
   padding: 0.5em;
-}
-nav li:nth-child(odd) {
-  width: 50%;
-  float: left;
-    padding: 0.5em;
 }
 nav a {
   color: #c80060;
@@ -57,7 +52,6 @@ nav a {
 nav a:hover {
   color:#00c4c7;
 }
-
 div.row {
   background-color: #fff6e0;
   border-bottom-left-radius: 10px;
@@ -128,20 +122,9 @@ footer a {
 }
 /* grid system */
 .row {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 1 auto;
-}
-[class*="col-"] {
-  flex: 0 0 92%;
-  margin: 0 4%;
-}
-.full-width {
-  flex: 0 0 100%;
-  margin: 0;
+  display: grid;
 }
 [class*="sidebar"] {
-  flex: 0 0 100%;
   margin-bottom: 2em;
   margin-right: 1em;
 }
@@ -159,41 +142,22 @@ footer a {
       width: 97%;
       max-width: 767px;
   }
-div.row {
-  padding: 0 2em;
-}
- nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
+  nav ul.full-width {
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0 2em;
   }
   nav a {
-      padding: 0em 1em 0em 1em;
+    padding: 0em 1em 0em 1em;
   }
-  [class*='col-']{
-    margin-left: 4%;
-    margin-right: 0%;
+  div.row {
+    padding: 0 2em;
   }
-  .col-1-2,
-  .col-2,
-  [class*="sidebar"] {
-    flex: 0 0 44%; 
-  }
-  .col-1-4,
-  .col-3,
-  .col-4 {
-    flex: 0 0 92%;
-  }
-  .reverse [class*='col-'] {
-    margin-left: 0%;
-    margin-right: 4%;
+  .col-1-4.row {
+    grid-template-columns: 1fr 1fr;
   }
 }
 /* Large devices (large desktops, 1200px and up) */
-@media (min-width: 850px) { 
+@media (min-width: 850px) {
   .wrapper {
       width: 97%;
       max-width: 1200px;
@@ -207,46 +171,41 @@ div.row {
     font-size: 2em;
   }
   div.row {
-    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 4%;
+    padding: 0 4%;
   }
-  nav li,
-  nav li:nth-child(even),
-  nav li:nth-child(odd) {
-    display: inline-block;
-    float: none;
-    width: auto;
-    padding: 0;
-  }
-  nav a {
+
+   nav a {
       padding: 0em 1em;
-  }
+  }/*
   .col-1-2,
   .col-1-4 {
-    flex: 0 0 20%;
+    grid-column: span 1;
   }
   .col-2,
   .col-2-4 {
-    flex: 0 0 44%;
+    grid-column: span 2;
   }
   .col-3 {
-    flex: 0 0 68%;
+    grid-column: span 3;
   }
   .col-4 {
-    flex: 0 0 92%;
+    grid-column: span 4;
+  } */
+  div.row article {
+    grid-area: history;
   }
-  [class*="sidebar"] {
-    flex: 0 0 100%;
+
+  div.row .col-1-4 {
+    grid-area: sidebar;
   }
-  .order-first {
-    order: 1;
-  } 
-  .order-second {
-    order: 2;
+  div.row {
+    grid-template-areas: 
+      "history history history sidebar";
   }
-  .order-third {
-    order: 3;
-  }
-  .order-fourth {
-    order: 4;
+  .col-1-4.row {
+    display: initial; /*grid-template-columns: 1fr;*/
   }
 }
