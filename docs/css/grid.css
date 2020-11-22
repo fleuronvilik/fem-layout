@@ -1,0 +1,106 @@
+/* Border box declaration 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: Arial, Geneva, sans-serif;
+}
+a {
+	color: #2772B0;
+}
+.wrapper {
+	width: 97%;
+	max-width: 1200px;
+	margin: 0 auto;
+	float: none;
+	background-color: #fff;
+	display: grid; /* grid system */
+	grid-column-gap: 4%; 
+}
+/* hack to make images flexible in our prototype */
+div img {
+	width: 100%;
+	max-width: 250px; 
+}
+
+/* .col-1-2,
+.col-1-4 {
+	background-color: #ffc;
+}
+.col-2,
+.col-2-4 {
+	background-color: #ccf;
+}
+.col-3-4 {
+	background-color: #fcf;
+}
+.col-4 {
+	background-color: #cff;
+} */
+
+
+/* Mobile Landscape Screen Sizes */
+@media only screen and (min-width: 480px)  {
+	.wrapper {
+		grid-template-rows: repeat(8, auto);
+	}
+
+	.col-1-2,
+	.col-2 {
+		grid-column-end: span 2;
+	}
+
+	.col-1-4,
+	.col-2-4,
+	.col-3-4,
+	.col-4 {
+		grid-column-end: span 4;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.wrapper {
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(5, auto);
+	}
+
+	.col-1-2,
+	.col-1-4 {
+		grid-column-end: span 1;
+	}
+
+	.col-2-4,
+	.col-2 {
+		grid-column-end: span 2;
+	}
+
+	.col-3-4 {
+		grid-column-start: 2;
+		grid-column-end: span 3;
+	}
+
+	.col-4 {
+		grid-column-end: span 4;
+	}
+	/* row 5, 1-2-1 boxes */
+	.col-1-2.order-first, .col-1-2.order-third {
+		grid-row: 5;
+	}
+	.col-2-4.order-second {
+		grid-column-start: 2;
+		grid-row: 5;
+	} /* causes new row */
+
+ 	.col-1-4.order-first {
+		grid-row: 3;
+	}
+}
+
